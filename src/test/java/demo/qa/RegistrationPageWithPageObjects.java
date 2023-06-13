@@ -5,11 +5,6 @@ import demo.qa.pages.RegistrationPage;
 import demo.qa.pages.components.ConfirmationPage;
 import org.junit.jupiter.api.Test;
 
-
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
-
 public class RegistrationPageWithPageObjects extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
