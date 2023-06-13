@@ -2,6 +2,7 @@ package demo.qa;
 
 
 import demo.qa.pages.RegistrationPage;
+import demo.qa.pages.components.ConfirmationPage;
 import org.junit.jupiter.api.Test;
 
 
@@ -12,6 +13,7 @@ import static com.codeborne.selenide.Selenide.*;
 public class RegistrationPageWithPageObjects extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
+    ConfirmationPage confirmationPage = new ConfirmationPage();
 
     @Test
     void successTest() {
@@ -27,21 +29,19 @@ public class RegistrationPageWithPageObjects extends TestBase {
                 .uploadPicture("Java.png")
                 .setCurrentAdress("Kazansky Vokzal")
                 .setState("NCR")
-                .setCity("Gurgaon");
-        $("#submit").click();
-
-
-        $(".table-responsive").shouldHave(text("Vasya Pupkin"));
-        $(".table-responsive").shouldHave(text("vasya@pupkin.ru"));
-        $(".table-responsive").shouldHave(text("Male"));
-        $(".table-responsive").shouldHave(text("2741001274"));
-        $(".table-responsive").shouldHave(text("1 July,2008"));
-        $(".table-responsive").shouldHave(text("English"));
-        $(".table-responsive").shouldHave(text("Reading"));
-        $(".table-responsive").shouldHave(text("Kazansky vokzal"));
-        $(".table-responsive").shouldHave(text("NCR"));
-        $(".table-responsive").shouldHave(text("Gurgaon"));
-
-
+                .setCity("Gurgaon")
+                .pushSubmit();
+        confirmationPage
+                .nameConfirmation("Vasya Pupkin")
+                .emailConfirmation("vasya@pupkin.ru")
+                .genderConfirmation("Male")
+                .numberConfirmation("2741001274")
+                .birthdayConfirmation("1 July,2008")
+                .subjectConfirmation("English")
+                .hobbiesConfirmation("Reading")
+                .pictureConfirmation("Java.png")
+                .addressConfirmation("Kazansky vokzal")
+                .stateConfirmation("NCR")
+                .cityConfirmation("Gurgaon");
     }
 }
