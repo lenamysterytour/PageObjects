@@ -18,7 +18,7 @@ public class RegistrationPageWithPageObjects extends TestBase {
         registrationPage.openPage()
                 .setFirstName("Vasya")
                 .setLastName("Pupkin")
-                .setEmail("vasya@punpkin.ru")
+                .setEmail("vasya@pupkin.ru")
                 .setGender("Male")
                 .setNumber("2741001274")
                 .setBirthday("July", "2008", "1")
@@ -32,11 +32,12 @@ public class RegistrationPageWithPageObjects extends TestBase {
 
 
         $(".table-responsive").shouldHave(text("Vasya Pupkin"));
-        $(".table-responsive").shouldHave(text("vasya@pupkin.com"));
+        $(".table-responsive").shouldHave(text("vasya@pupkin.ru"));
         $(".table-responsive").shouldHave(text("Male"));
         $(".table-responsive").shouldHave(text("2741001274"));
-        $(".table-responsive").shouldHave(text("1 June,2023"));
+        $(".table-responsive").shouldHave(text("1 July,2008"));
         $(".table-responsive").shouldHave(text("English"));
+        $(".table-responsive").shouldHave(text("Reading"));
         $(".table-responsive").shouldHave(text("Kazansky vokzal"));
         $(".table-responsive").shouldHave(text("NCR"));
         $(".table-responsive").shouldHave(text("Gurgaon"));

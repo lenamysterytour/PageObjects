@@ -62,7 +62,7 @@ public class RegistrationPage {
         calendarComponent.setDate(month, year, day);
         return this;
     }
- 
+
 
     public RegistrationPage setSubjectInput(String value) {
         subjectChooseInput.setValue(value).pressEnter();
@@ -84,12 +84,14 @@ public class RegistrationPage {
         return this;
     }
     public RegistrationPage setState(String value) {
-        stateInput.setValue(value);
+        stateInput.click();
+        stateInput.$(byText(value)).click();
         return this;
     }
 
     public RegistrationPage setCity(String value) {
-        cityInput.setValue(value);
+        cityInput.click();
+        cityInput.$(byText(value)).click();
         return this;}
 
 
