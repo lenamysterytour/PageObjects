@@ -62,11 +62,7 @@ public class RegistrationPage {
         calendarComponent.setDate(month, year, day);
         return this;
     }
-
-   // public RegistrationPage setSubjectLetter(String value) {
-    //    subjectLetterInput.setValue(value);
-   //     return this;
- //   }
+ 
 
     public RegistrationPage setSubjectInput(String value) {
         subjectChooseInput.setValue(value).pressEnter();
