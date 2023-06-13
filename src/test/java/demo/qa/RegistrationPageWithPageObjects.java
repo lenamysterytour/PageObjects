@@ -2,7 +2,6 @@ package demo.qa;
 
 
 import demo.qa.pages.RegistrationPage;
-import demo.qa.pages.components.CalendarComponent;
 import org.junit.jupiter.api.Test;
 
 
@@ -16,25 +15,19 @@ public class RegistrationPageWithPageObjects extends TestBase {
         @Test
 
         void successTest() {
-            .registrationPage.openPage()
+            registrationPage.openPage()
           .setFirstName("Vasya")
           .setLastName("Pupkin")
-           .setEmail("vasya@punpkin.ru")
+                    .setEmail("vasya@punpkin.ru")
          .setGender("Male")
-          .setNumber("2741001274")
-           .setBirthday("30", "July","2008");
-
-
-
-
-
-
+                    .setNumber("2741001274")
+         .setBirthday("July","2008","1");
 
             $("#subjectsInput").setValue("E");
             $(byText("English")).click();
             $("#hobbiesWrapper").$(byText("Reading")).click();
             $("#currentAddress").setValue("Kazansky vokzal");
-            $("#uploadPicture").uploadFromClasspath("Java.png");
+            //$("#uploadPicture").uploadFromClasspath("Java.png");
             $("#stateCity-wrapper").$("#state").click();
             $("#state").$(byText("NCR")).click();
             $("#stateCity-wrapper").$("#city").click();

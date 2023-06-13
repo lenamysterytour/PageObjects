@@ -18,7 +18,7 @@ userEmail =  $("#userEmail"),
 
     setNumber =  $("#userNumber"),
 
-           birthDayInput = $("dayOfBirthInput") ;
+           birthDayInput = $("#dateOfBirthInput") ;
 
     public RegistrationPage openPage(){
         open("/automation-practice-form");
@@ -42,9 +42,9 @@ public RegistrationPage setGender(String value){
     public RegistrationPage setNumber (String value){
         setNumber.setValue(value);
         return this;}
-    public RegistrationPage setBirthday (String day, String month, String year){
+    public RegistrationPage setBirthday (String month, String year, String day){
         birthDayInput.click();
-        calendarComponent.setDate(day, month, year);
+        calendarComponent.setDate(month, year, day);
     return this;}
 
 
