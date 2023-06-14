@@ -17,7 +17,6 @@ public class RegistrationPage {
             genderWrapper = $("#genterWrapper"),
             setNumber = $("#userNumber"),
             birthDayInput = $("#dateOfBirthInput"),
-            subjectLetterInput = $("#subjectsWrapper").$("#subjectsInput"),
             subjectChooseInput = $("#subjectsWrapper").$("#subjectsInput"),
             setHobbiesInput = $("#hobbiesWrapper"),
             uploadPictureInput = $("#uploadPicture"),
@@ -28,10 +27,15 @@ public class RegistrationPage {
 
     public RegistrationPage openPage() {
         open("/automation-practice-form");
+        return this;
+    }
+
+    public RegistrationPage removeAds() {
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
         return this;
     }
+
 
     public RegistrationPage setFirstName(String value) {
         firstNameInput.setValue(value);
@@ -80,7 +84,7 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setCurrentAdress(String value) {
+    public RegistrationPage setCurrentAddress(String value) {
         currentAddressInput.setValue(value);
         return this;
     }

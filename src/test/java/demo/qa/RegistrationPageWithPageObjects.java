@@ -12,7 +12,7 @@ public class RegistrationPageWithPageObjects extends TestBase {
 
     @Test
     void successTest() {
-        registrationPage.openPage()
+        registrationPage.openPage().removeAds()
                 .setFirstName("Vasya")
                 .setLastName("Pupkin")
                 .setEmail("vasya@pupkin.ru")
@@ -22,7 +22,7 @@ public class RegistrationPageWithPageObjects extends TestBase {
                 .setSubjectInput("English")
                 .setHobbies("Reading")
                 .uploadPicture("Java.png")
-                .setCurrentAdress("Kazansky Vokzal")
+                .setCurrentAddress("Kazansky Vokzal")
                 .setState("NCR")
                 .setCity("Gurgaon")
                 .pushSubmit();
