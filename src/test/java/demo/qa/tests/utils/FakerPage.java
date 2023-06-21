@@ -6,10 +6,6 @@ public class FakerPage {
 
     static Faker faker = new Faker();
 
-    // public String
-    //       state = getRandomFakerUserState(),
-    //     city = getRandomFakerUserCity(state);
-
     public static String fakeGender() {
         String[] genders = {"Male", "Female", "Other"};
         return faker.options().option(genders);
