@@ -1,6 +1,9 @@
 package demo.qa.tests.utils;
 
 import com.github.javafaker.Faker;
+import demo.qa.pages.RegistrationPage;
+
+import static com.codeborne.selenide.Selenide.$;
 
 public class FakerPage {
 
@@ -30,6 +33,13 @@ public class FakerPage {
         String[] year = {"2022", "2023", "2024", "1990"};
         return faker.options().option(year);
     }
+
+//    public String fakeBirthdayDate () {
+//        return String.format("%02d", faker.number().numberBetween(1, 28));
+//
+//    }
+
+
 
     public static String getRandomFakerUserState() {
         String[] state = {"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"};

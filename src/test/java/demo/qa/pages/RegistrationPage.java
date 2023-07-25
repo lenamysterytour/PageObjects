@@ -2,10 +2,13 @@ package demo.qa.pages;
 
 import com.codeborne.selenide.SelenideElement;
 import demo.qa.pages.components.CalendarComponent;
+import demo.qa.tests.RegistrationWithTestDate;
+import demo.qa.tests.utils.FakerPage;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.executeJavaScript;
+
 
 public class RegistrationPage {
 
@@ -62,12 +65,16 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setBirthday(String month, String year, String day) {
+    public RegistrationPage setBirthday(String month, String year) {
         birthDayInput.click();
-        calendarComponent.setDate(month, year, day);
+        calendarComponent.setDate(month, year);
         return this;
     }
+    public RegistrationPage setBirthdayDate () {
+        birthDayInput.click();
 
+        return this;
+    }
 
     public RegistrationPage setSubjectInput(String value) {
         subjectChooseInput.setValue(value).pressEnter();

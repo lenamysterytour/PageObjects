@@ -3,10 +3,13 @@ package demo.qa.tests;
 import com.codeborne.selenide.Configuration;
 import com.github.javafaker.Faker;
 import demo.qa.TestBase;
+import demo.qa.pages.RegistrationPage;
+import demo.qa.pages.components.CalendarComponent;
 import demo.qa.tests.utils.FakerPage;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
@@ -25,6 +28,7 @@ public class RegistrationWithTestDate extends TestBase {
 
         Faker faker = new Faker();
         FakerPage fakerPage = new FakerPage();
+        RegistrationPage registrationPage = new RegistrationPage();
 
         String fakeFirstName = faker.name().firstName(),
                 fakeLastName = faker.name().lastName(),
@@ -40,32 +44,55 @@ public class RegistrationWithTestDate extends TestBase {
                 fakeHobbie = FakerPage.fakeHobbies(),
                 fakePicture = "Java.png",
                 fakeYear = FakerPage.fakeYear(),
-                fakeMonth = FakerPage.fakeMonth();
+                fakeMonth = FakerPage.fakeMonth(),
+                fakeBirthdayDate = String.format("%02d", faker.number().numberBetween(1, 28));
 
 
-        open("/automation-practice-form");
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('footer').remove()");
-        $("#firstName").setValue(fakeFirstName);
-        $("#lastName").setValue(fakeLastName);
-        $("#userEmail").setValue(fakeEmail);
-        $("#genterWrapper").$(byText(fakeGender)).click();
-        $("#userNumber").setValue(fakeNumber);
-        $("#dateOfBirthInput").click();
-        $(".react-datepicker__month-select").selectOption(fakeMonth);
-        $(".react-datepicker__year-select").selectOption(fakeYear);
-        $("div.react-datepicker__day--001:not(.react-datepicker__day--outside-month").click();
-        $("#subjectsInput").setValue("E");
-        $(byText(fakeSubject)).click();
-        $("#hobbiesWrapper").$(byText(fakeHobbie)).click();
-        $("#uploadPicture").uploadFromClasspath(fakePicture);
-        $("#currentAddress").setValue(fakeCurrentAddress);
-        $("#stateCity-wrapper").$("#state").click();
-        $("#state").$(byText(fakeState)).click();
-        $("#stateCity-wrapper").$("#city").click();
-        $("#city").$(byText(fakeCity)).click();
-        $("#submit").click();
+        registrationPage.openPage().removeAds()
+                .setFirstName(fakeFirstName)
+                .setLastName(fakeLastName)
+                .setEmail(fakeEmail)
+                .setGender(fakeGender)
+                .setNumber(fakeNumber)
 
+                .setBirthdayDate(fakeBirthdayDate)
+                //здесь где-то ошибка Element not found {.react-datepicker__day--00:not(.react-datepicker__day--outside-month)}
+                .setBirthday(fakeMonth, fakeYear)
+
+                .setSubjectInput("E")
+                .setSubjectInput(fakeSubject)
+                .setHobbies(fakeHobbie);
+        registrationPage
+                .uploadPicture(fakePicture)
+                .setCurrentAddress(fakeCurrentAddress)
+                .setState(fakeState)
+                .setCity(fakeCity)
+                .pushSubmit();
+
+
+//        registrationPage.setFirstName(fakeFirstName);
+//        $("#firstName").setValue(fakeFirstName);
+//        $("#lastName").setValue(fakeLastName);
+//        $("#userEmail").setValue(fakeEmail);
+//        $("#genterWrapper").$(byText(fakeGender)).click();
+//        $("#userNumber").setValue(fakeNumber);
+//        $("#dateOfBirthInput").click();
+//        $(".react-datepicker__month-select").selectOption(fakeMonth);
+//        $(".react-datepicker__year-select").selectOption(fakeYear);
+//        $("div.react-datepicker__day--001:not(.react-datepicker__day--outside-month").click();
+//        $("#subjectsInput").setValue("E");
+//        $(byText(fakeSubject)).click();
+//        $("#hobbiesWrapper").$(byText(fakeHobbie)).click();
+//        $("#uploadPicture").uploadFromClasspath(fakePicture);
+//        $("#currentAddress").setValue(fakeCurrentAddress);
+//        $("#stateCity-wrapper").$("#state").click();
+//        $("#state").$(byText(fakeState)).click();
+//        $("#stateCity-wrapper").$("#city").click();
+//        $("#city").$(byText(fakeCity)).click();
+//        $("#submit").click();
+
+        $(".modal-dialog").should(appear);
+        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
 
         $(".table-responsive").shouldHave(text(fakeFirstName));
         $(".table-responsive").shouldHave(text(fakeLastName));
