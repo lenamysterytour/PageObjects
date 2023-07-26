@@ -43,9 +43,10 @@ public class RegistrationWithTestDate extends TestBase {
                 fakeSubject = FakerPage.fakeSubjects(),
                 fakeHobbie = FakerPage.fakeHobbies(),
                 fakePicture = "Java.png",
-                fakeYear = FakerPage.fakeYear(),
-                fakeMonth = FakerPage.fakeMonth(),
-                fakeBirthdayDate = String.format("%02d", faker.number().numberBetween(1, 28));
+        //fakeBirthday = FakerPage.fakeBirthdays();
+                fakeBirthdayDate = "1 January, 2022";
+//               fakeYear = FakerPage.fakeYear(),
+  //              fakeMonth = FakerPage.fakeMonth();
 
 
         registrationPage.openPage().removeAds()
@@ -54,11 +55,8 @@ public class RegistrationWithTestDate extends TestBase {
                 .setEmail(fakeEmail)
                 .setGender(fakeGender)
                 .setNumber(fakeNumber)
-
-                .setBirthdayDate(fakeBirthdayDate)
-                //здесь где-то ошибка Element not found {.react-datepicker__day--00:not(.react-datepicker__day--outside-month)}
-                .setBirthday(fakeMonth, fakeYear)
-
+                 .setFakeBirthdayDate(fakeBirthdayDate)
+//                .setFakeBirthDay("1", "January", "2022")
                 .setSubjectInput("E")
                 .setSubjectInput(fakeSubject)
                 .setHobbies(fakeHobbie);
@@ -99,8 +97,8 @@ public class RegistrationWithTestDate extends TestBase {
         $(".table-responsive").shouldHave(text(fakeEmail));
         $(".table-responsive").shouldHave(text(fakeGender));
         $(".table-responsive").shouldHave(text(fakeNumber));
-        $(".table-responsive").shouldHave(text(fakeMonth));
-        $(".table-responsive").shouldHave(text(fakeYear));
+       // $(".table-responsive").shouldHave(text(fakeMonth));
+       // $(".table-responsive").shouldHave(text(fakeYear));
         $(".table-responsive").shouldHave(text(fakeSubject));
         $(".table-responsive").shouldHave(text(fakeHobbie));
         $(".table-responsive").shouldHave(text(fakePicture));

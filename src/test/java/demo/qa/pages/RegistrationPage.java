@@ -4,6 +4,7 @@ import com.codeborne.selenide.SelenideElement;
 import demo.qa.pages.components.CalendarComponent;
 import demo.qa.tests.RegistrationWithTestDate;
 import demo.qa.tests.utils.FakerPage;
+import org.openqa.selenium.Keys;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
@@ -20,6 +21,8 @@ public class RegistrationPage {
             genderWrapper = $("#genterWrapper"),
             setNumber = $("#userNumber"),
             birthDayInput = $("#dateOfBirthInput"),
+
+birthdayDaylocator = $(".react-datepicker__day--0:not(.react-datepicker__day--outside-month)"),
             subjectChooseInput = $("#subjectsWrapper").$("#subjectsInput"),
             setHobbiesInput = $("#hobbiesWrapper"),
             uploadPictureInput = $("#uploadPicture"),
@@ -65,13 +68,29 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setBirthday(String month, String year) {
+    public RegistrationPage setFakeBirthdayDate (String value) {
         birthDayInput.click();
-        calendarComponent.setDate(month, year);
+        birthdayDaylocator.setValue(value);
+        return this;
+    }
+
+
+    public RegistrationPage setFakeBirthday(String value) {
+      //birthDayInput.clear();
+      birthDayInput.sendKeys(Keys.CONTROL+"a");
+      birthDayInput.sendKeys(Keys.DELETE);
+     birthDayInput.setValue(value).click();
+        return this;
+    }
+
+    public RegistrationPage setBirthday(String month, String year, String day) {
+        birthDayInput.click();
+        calendarComponent.setDate(month, year, day);
         return this;
     }
     public RegistrationPage setBirthdayDate () {
         birthDayInput.click();
+        birthdayDaylocator.click();
 
         return this;
     }

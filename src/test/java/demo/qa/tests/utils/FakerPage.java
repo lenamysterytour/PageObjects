@@ -24,20 +24,21 @@ public class FakerPage {
         return faker.options().option(hobbies);
     }
 
-    public static String fakeMonth() {
-        String[] month = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+     public static String fakeMonth() {
+         String[] month = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
         return faker.options().option(month);
-    }
+     }
 
-    public static String fakeYear() {
+     public static String fakeYear() {
         String[] year = {"2022", "2023", "2024", "1990"};
-        return faker.options().option(year);
+         return faker.options().option(year);
     }
 
-//    public String fakeBirthdayDate () {
-//        return String.format("%02d", faker.number().numberBetween(1, 28));
-//
-//    }
+
+public static String fakeBirthdays () {
+    String[] birthdays = {"1 January, 2022","5 February 2020"};
+    return new Faker().options().option(birthdays);
+}
 
 
 
