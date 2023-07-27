@@ -54,18 +54,17 @@ public class RegistrationWithTestDate extends TestBase {
                 .pushSubmit();
 
 
-        confirmationPage.verifyGreeting();
-        confirmationPage.verifyResult("Student Name", fakeFirstName + " " + fakeLastName);
-        confirmationPage.verifyResult("Student Email", fakeEmail);
-        confirmationPage.verifyResult("Gender", fakeGender);
-        confirmationPage.verifyResult("Mobile", fakeNumber);
-        confirmationPage.verifyResult("Date of Birth", fakeBirthday + " " + fakeMonth + "," + fakeYear);
-        confirmationPage.verifyResult("Subjects", fakeSubject);
-        confirmationPage.verifyResult("Hobbies", fakeHobbie);
-        confirmationPage.verifyResult("Picture", fakePicture);
-        confirmationPage.verifyResult("Address", fakeCurrentAddress);
-        confirmationPage.verifyResult("State and City", fakeState + " " + fakeCity);
-
+        confirmationPage.verifyGreeting()
+              .verifyResult("Student Name", fakeFirstName + " " + fakeLastName)
+                .verifyResult("Student Email", fakeEmail)
+                .verifyResult("Gender", fakeGender)
+                .verifyResult("Mobile", fakeNumber)
+                .verifyResult("Date of Birth", fakeBirthday + " " + fakeMonth + "," + fakeYear)
+                .verifyResult("Subjects", fakeSubject)
+                .verifyResult("Hobbies", fakeHobbie)
+                .verifyResult("Picture", fakePicture)
+                .verifyResult("Address", fakeCurrentAddress)
+                .verifyResult("State and City", fakeState + " " + fakeCity);
 
     }
 }

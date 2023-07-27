@@ -11,12 +11,14 @@ public class ConfirmationPage {
     SelenideElement confirMantionTable = $(".table-responsive"),
             greetingText = $("#example-modal-sizes-title-lg");
 
-    public void verifyGreeting() {
+    public ConfirmationPage verifyGreeting() {
         greetingText.shouldHave(text("Thanks for submitting the form"));
+        return this;
     }
 
-    public void verifyResult(String key, String value) {
-        confirMantionTable.$(byText(key)).sibling(0).shouldHave(text(value));}
+    public ConfirmationPage verifyResult(String key, String value) {
+        confirMantionTable.$(byText(key)).sibling(0).shouldHave(text(value));
+    return this;}
 
 
         public ConfirmationPage nameConfirmation (String value){
