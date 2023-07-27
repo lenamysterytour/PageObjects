@@ -19,7 +19,7 @@ public class RegistrationPage {
             setNumber = $("#userNumber"),
             birthDayInput = $("#dateOfBirthInput"),
 
-    birthdayDaylocator = $(".react-datepicker__day--:not(.react-datepicker__day--outside-month)"),
+
             subjectChooseInput = $("#subjectsWrapper").$("#subjectsInput"),
             setHobbiesInput = $("#hobbiesWrapper"),
             uploadPictureInput = $("#uploadPicture"),
@@ -27,6 +27,8 @@ public class RegistrationPage {
             stateInput = $("#stateCity-wrapper").$("#state"),
             cityInput = $("#stateCity-wrapper").$("#city"),
             submitPushInput = $("#submit");
+
+
 
     public RegistrationPage openPage() {
         open("/automation-practice-form");
@@ -109,5 +111,8 @@ public class RegistrationPage {
         submitPushInput.click();
         return this;
     }
+
+
+
 
 }

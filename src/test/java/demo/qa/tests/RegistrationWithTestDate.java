@@ -7,9 +7,6 @@ import demo.qa.pages.components.ConfirmationPage;
 import demo.qa.tests.utils.FakerPage;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Condition.appear;
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationWithTestDate extends TestBase {
 
@@ -36,7 +33,8 @@ public class RegistrationWithTestDate extends TestBase {
                 fakePicture = "Java.png",
                 fakeBirthday = FakerPage.fakeBirthdays(),
                 fakeYear = FakerPage.fakeYear(),
-                fakeMonth = FakerPage.fakeMonth();
+                fakeMonth = FakerPage.fakeMonth(),
+                confirmation = "Thanks for submitting the form";
 
 
         registrationPage.openPage().removeAds()
@@ -56,20 +54,18 @@ public class RegistrationWithTestDate extends TestBase {
                 .pushSubmit();
 
 
-        $(".modal-dialog").should(appear);
-        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
+        confirmationPage.verifyGreeting();
+        confirmationPage.verifyResult("Student Name", fakeFirstName + " " + fakeLastName);
+        confirmationPage.verifyResult("Student Email", fakeEmail);
+        confirmationPage.verifyResult("Gender", fakeGender);
+        confirmationPage.verifyResult("Mobile", fakeNumber);
+        confirmationPage.verifyResult("Date of Birth", fakeBirthday + " " + fakeMonth + "," + fakeYear);
+        confirmationPage.verifyResult("Subjects", fakeSubject);
+        confirmationPage.verifyResult("Hobbies", fakeHobbie);
+        confirmationPage.verifyResult("Picture", fakePicture);
+        confirmationPage.verifyResult("Address", fakeCurrentAddress);
+        confirmationPage.verifyResult("State and City", fakeState + " " + fakeCity);
 
-        confirmationPage.nameConfirmation(fakeFirstName)
-                .emailConfirmation(fakeEmail)
-                .genderConfirmation(fakeGender)
-                .numberConfirmation(fakeNumber)
-                .birthdayConfirmation(fakeBirthday + " " + fakeMonth + "," + fakeYear)
-                .subjectConfirmation(fakeSubject)
-                .hobbiesConfirmation(fakeHobbie)
-                .pictureConfirmation(fakePicture)
-                .addressConfirmation(fakeCurrentAddress)
-                .stateConfirmation(fakeState)
-                .cityConfirmation(fakeCity);
 
     }
 }
