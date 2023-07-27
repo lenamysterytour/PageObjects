@@ -2,9 +2,6 @@ package demo.qa.pages;
 
 import com.codeborne.selenide.SelenideElement;
 import demo.qa.pages.components.CalendarComponent;
-import demo.qa.tests.RegistrationWithTestDate;
-import demo.qa.tests.utils.FakerPage;
-import org.openqa.selenium.Keys;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
@@ -22,14 +19,14 @@ public class RegistrationPage {
             setNumber = $("#userNumber"),
             birthDayInput = $("#dateOfBirthInput"),
 
-birthdayDaylocator = $(".react-datepicker__day--0:not(.react-datepicker__day--outside-month)"),
+    birthdayDaylocator = $(".react-datepicker__day--:not(.react-datepicker__day--outside-month)"),
             subjectChooseInput = $("#subjectsWrapper").$("#subjectsInput"),
             setHobbiesInput = $("#hobbiesWrapper"),
             uploadPictureInput = $("#uploadPicture"),
             currentAddressInput = $("#currentAddress"),
             stateInput = $("#stateCity-wrapper").$("#state"),
             cityInput = $("#stateCity-wrapper").$("#city"),
-    submitPushInput = $("#submit");
+            submitPushInput = $("#submit");
 
     public RegistrationPage openPage() {
         open("/automation-practice-form");
@@ -68,32 +65,13 @@ birthdayDaylocator = $(".react-datepicker__day--0:not(.react-datepicker__day--ou
         return this;
     }
 
-    public RegistrationPage setFakeBirthdayDate (String value) {
-        birthDayInput.click();
-        birthdayDaylocator.setValue(value);
-        return this;
-    }
-
-
-    public RegistrationPage setFakeBirthday(String value) {
-      //birthDayInput.clear();
-      birthDayInput.sendKeys(Keys.CONTROL+"a");
-      birthDayInput.sendKeys(Keys.DELETE);
-     birthDayInput.setValue(value).click();
-        return this;
-    }
 
     public RegistrationPage setBirthday(String month, String year, String day) {
         birthDayInput.click();
         calendarComponent.setDate(month, year, day);
         return this;
     }
-    public RegistrationPage setBirthdayDate () {
-        birthDayInput.click();
-        birthdayDaylocator.click();
 
-        return this;
-    }
 
     public RegistrationPage setSubjectInput(String value) {
         subjectChooseInput.setValue(value).pressEnter();
@@ -114,6 +92,7 @@ birthdayDaylocator = $(".react-datepicker__day--0:not(.react-datepicker__day--ou
         currentAddressInput.setValue(value);
         return this;
     }
+
     public RegistrationPage setState(String value) {
         stateInput.click();
         stateInput.$(byText(value)).click();
@@ -123,10 +102,12 @@ birthdayDaylocator = $(".react-datepicker__day--0:not(.react-datepicker__day--ou
     public RegistrationPage setCity(String value) {
         cityInput.click();
         cityInput.$(byText(value)).click();
-        return this;}
+        return this;
+    }
 
-    public RegistrationPage pushSubmit (){
+    public RegistrationPage pushSubmit() {
         submitPushInput.click();
-    return this;}
+        return this;
+    }
 
 }
