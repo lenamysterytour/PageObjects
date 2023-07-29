@@ -5,6 +5,7 @@ import demo.qa.TestBase;
 import demo.qa.pages.RegistrationPage;
 import demo.qa.pages.components.ConfirmationPage;
 import demo.qa.tests.utils.FakerPage;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 
@@ -12,6 +13,7 @@ public class RegistrationWithTestDate extends TestBase {
 
 
     @Test
+    @Tag("simple")
     void successTest() {
 
         Faker faker = new Faker();
