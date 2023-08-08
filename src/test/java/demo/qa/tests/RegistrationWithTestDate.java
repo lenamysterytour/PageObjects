@@ -1,7 +1,7 @@
 package demo.qa.tests;
 
 import com.github.javafaker.Faker;
-import demo.qa.TestBase;
+import demo.qa.tests.utils.TestBase;
 import demo.qa.pages.RegistrationPage;
 import demo.qa.pages.components.ConfirmationPage;
 import demo.qa.tests.utils.FakerPage;

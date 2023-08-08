@@ -1,9 +1,9 @@
-package demo.qa;
+package demo.qa.tests;
 
 
 import demo.qa.pages.RegistrationPage;
 import demo.qa.pages.components.ConfirmationPage;
-import org.junit.jupiter.api.Tag;
+import demo.qa.tests.utils.TestBase;
 import org.junit.jupiter.api.Test;
 
 public class RegistrationPageWithPageObjects extends TestBase {

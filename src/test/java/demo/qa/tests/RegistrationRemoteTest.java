@@ -8,10 +8,11 @@ import demo.qa.tests.utils.RemoteTestBase;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
+@Tag("remote")
 public class RegistrationRemoteTest extends RemoteTestBase {
 
     @Test
-    @Tag("remote")
+
     void successTest() {
 
         Faker faker = new Faker();
