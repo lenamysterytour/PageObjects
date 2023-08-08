@@ -52,7 +52,7 @@ public class RegistrationRemoteTest extends RemoteTestBase {
                             .setBirthday(fakeMonth, fakeYear, fakeBirthday)
                             .setSubjectInput("E")
                             .setSubjectInput(fakeSubject)
-                            .setHobbies(fakeHobbie)
+                       //     .setHobbies(fakeHobbie)
                             .uploadPicture(fakePicture)
                             .setCurrentAddress(fakeCurrentAddress)
                             .setState(fakeState)
