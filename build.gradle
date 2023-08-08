@@ -51,7 +51,5 @@ task remote_test(type: Test) {
         includeTags("remote")
     }
 
-    compileJava.options.fork = true  //new
-    compileJava.options.forkOptions.executable = '/path_to_javac'    //new
 
 }
