@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.logevents.SelenideLogger.step;
+import static java.lang.String.format;
 
 public class RegistrationRemoteTest extends RemoteTestBase {
 
@@ -74,5 +75,10 @@ public class RegistrationRemoteTest extends RemoteTestBase {
                     .verifyResult("Address", fakeCurrentAddress)
                     .verifyResult("State and City", fakeState + " " + fakeCity);
         });
+
+
+
+
+
     }
 }
